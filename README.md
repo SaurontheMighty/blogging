@@ -11,7 +11,7 @@ Running on your machine:
 <br />
 
 ### __Anatomy__:
-<br />
+
 
 #### __Backend__:
 
@@ -23,6 +23,8 @@ Node Dependencies\
 -> Mongoose: Object Data Modelling library to simplify working with MongoDB.\
 -> Morgan: Logger to help debug.\
 -> dotenv: To protect MongoDB and other API secrets.
+-> Nodemon: Live reload server to speed up development.
+-> CORS: To facilitate access between React and Node in development when they are served on different ports.
 
 <br />
 
