@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 import Home from './components/Home';
 import Header from './components/Header';
+import UserPage from './components/UserPage';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/blogs/:id">
             <Details />
+          </Route>
+          <Route path="/users">
+            <UserPage />
           </Route>
           <Route path="*">
             <NotFound />

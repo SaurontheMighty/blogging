@@ -6,7 +6,8 @@ Full Stack Web Application: MongoDB, Express, React, Node.js (MERN).
 
 Running on your machine:
 1. `npm install` to install dependencies in /backend
-2. `nodemon app` to run
+2. `nodemon server` to run the backend
+3. `npm run start` to run the frontend
 
 <br />
 
@@ -30,7 +31,10 @@ Node Dependencies\
 
 #### __Frontend__
 
-React: JavaScript library for building user interfaces.
+_React_: JavaScript library for building user interfaces.\
+
+React Dependencies\
+-> React-Router-DOM: For routing inside the Single Page Application.\
 
 P.S.
 The name is from Hitchhiker's Guide to the Galaxy\
