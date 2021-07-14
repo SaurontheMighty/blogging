@@ -35,11 +35,12 @@ const CreateBlog = () => {
     }
 
     return (
-        <div className="create-blog content">
+        <main>
             <h1>Create Blog</h1>
-            <form onSubmit = {create}>
+            <form onSubmit = {create} className="create-form">
                 <label htmlFor="title">Title:</label>   
                 <input 
+                className ="form-input"
                 type="text" 
                 value = {title}
                 onChange = {(e) => setTitle(e.target.value)}
@@ -47,6 +48,7 @@ const CreateBlog = () => {
 
                 <label htmlFor="snippe">Subtitle:</label>
                 <input 
+                className ="form-input"
                 type="text" 
                 value = {subtitle}
                 onChange = {(e) => setSubtitle(e.target.value)}
@@ -54,15 +56,16 @@ const CreateBlog = () => {
 
                 <label htmlFor="body">Body:</label>
                 <textarea 
+                className ="form-input"
                 value = {body}
                 onChange = {(e) => setBody(e.target.value)}
                 required>
                 </textarea>
 
-                <button>Create</button>
+                <button className="click">Create</button>
             </form>
             {err? <p>Unable to Submit Form.</p> : <p></p>}
-        </div>
+        </main>
     );
 }
  

@@ -52,16 +52,16 @@ const Details = () => {
 
     return (
         <main>
-            <h2 className="title">{blog.title}</h2>
-            <p className="snippet">{blog.subtitle}</p>
-            <p className="body">{blog.body}</p>
-            <div className="tray">
-                <img src="/assets/edit.svg"/>
-                <img src="/assets/delete.svg" style ={{
-                    cursor: 'pointer'
-                }} onClick = {deletePost} />
-            </div>
-            {err? <p>Unable to Submit Form.</p> : <p></p>}
+            <h1>{blog.title}</h1>
+            <article className="details">
+                <p className="snippet">{blog.subtitle}</p>
+                <p className="body">{blog.body}</p>
+                <div className="tray">
+                    <img src="/assets/edit.svg"/>
+                    <img src="/assets/delete.svg" className="click" onClick = {deletePost} />
+                </div>
+                {err? <p>Unable to Submit Form.</p> : <p></p>}
+            </article>
         </main>
     );
 }

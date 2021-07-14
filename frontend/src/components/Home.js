@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 
-
 const Home = () => {
 
     const [blogs, setBlogs] = useState([]);
@@ -26,6 +25,7 @@ const Home = () => {
 
     return (
         <main>
+            <h1 className="page-title">Browse</h1>
             {blogs.map((blog) => (
                 <Link to={{
                     pathname:`/blogs/${blog._id}`,
@@ -34,7 +34,7 @@ const Home = () => {
                     <article className="blog">
                         <h3 className="title">{blog.title}</h3>
                         <p className="snippet">{blog.subtitle}</p>
-                        <p className="body">{blog.body}</p>
+                        <p className="body">{(blog.body).split(' ').slice(0,100).join(' ')+" ... Read More"}</p>
                     </article>
                 </Link>
             ))}
