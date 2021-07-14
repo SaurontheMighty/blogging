@@ -17,12 +17,17 @@ const Details = () => {
         let response = await fetch(`http://localhost:3000/api/blogs/${id}`, {
             method: "GET"
         });
+
+        console.log(response);
     
         if(response.ok) {
             let data = await response.json();
             let blog = data.blog;
 
             setBlog(blog);
+        }
+        else {
+            history.push('/404')
         }
     }
 

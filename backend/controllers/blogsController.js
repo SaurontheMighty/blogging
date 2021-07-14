@@ -1,93 +1,83 @@
 const Blog = require('../models/blog');
 
 
-const getBlogs = async (req, res) => {
+const getBlogs = (req, res, next) => {
 
     let blogs;
 
     if(req.query.id) {
-        try {
-            blogs = await Blog.find({ user: req.query.id });
-        }
-        catch{
-            res.status(500);
-            blogs = [];
-        }
+
+        Blog.find({ user: req.query.id }, function(err, data) {
+            if(err) {
+                next(err);
+            }
+            else {
+                res.json({ blogs: data });
+            }
+        });
     }
     else if(req.query.title) {
-        try {
-            blogs = await Blog.find({$text: { $search: req.query.title }});
 
-        } 
-        catch {
-            res.status(500);
-            blogs = [];
-        }
+        Blog.find({$text: { $search: req.query.title }}, function (err, data) {
+            if(err) {
+                next(err);
+            }
+            else {
+                res.json({ blogs: data });
+            }
+        });
     }
     else {
-        try {
-            blogs = await Blog.find();
+
+        Blog.find(function (err, data) {
+            if(err) {
+                next(err);
+            }
+            else {
+                res.json({ blogs: data });
+            }
+        });
+    }
+}
+
+const createBlog = (req, res, next) => {
+
+    const blog = new Blog(req.body);
+    blog.save(function (err, data) {
+
+        if(err) {
+            next(err);
         }
-        catch {
-            res.status(500);
-            blogs = [];
+        else {
+            res.json({ blog: data });
         }
-    }
-
-    let response = {
-        blogs: blogs
-    }
-    res.json(response);
+    });
 }
 
-const createBlog = async (req, res) => {
+const detailsBlog = (req, res, next) => {
 
-    let result;
-    console.log("!!!!!!!!!!!!!!!!!!!");
-    console.log(req.body);
-    
-    try {
-        const blog = new Blog(req.body);
-        result = await blog.save();
-    }
-    catch {
-        result = {};
-        res.status(500);
-    }
+    Blog.findById(req.params.id, function (err, data) {
 
-    res.json({ blog: result })
+        if(err) {
+            return next(err);
+        }
+        else {
+            res.json({ blog: data });
+        }
+    });
 }
 
-const detailsBlog = async (req, res) => {
+const deleteBlog = async (req, res, next) => {
 
-    try {
-        blog = await Blog.findById(req.params.id);
-    }
-    catch {
-        blog = {}
-        res.status(500);
-    }
+    Blog.findByIdAndDelete(req.params.id, function(err, data) {
 
-    let response = {
-        blog: blog
-    }
-    
-    res.json(response);
-}
-
-const deleteBlog = async (req, res) => {
-
-    let response;
-    
-    try {
-        response = await Blog.findByIdAndDelete(req.params.id);
-    }
-    catch {
-        response = {};
-        res.status(500);
-    }
-
-    res.json({ blog: response });
+        if(err) {
+            next(err);
+        }
+        else {
+            res.json({ blog: data });
+        }
+    });
 }
 
 module.exports = {getBlogs, createBlog, detailsBlog, deleteBlog};
