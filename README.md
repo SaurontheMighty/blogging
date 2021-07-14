@@ -16,25 +16,28 @@ Running on your machine:
 
 #### __Backend__:
 
+The backend is a Blogging API that uses mongoose to connect to MongoDB Atlas and express and Node to create the backend.
+
 _MongoDB_: No-SQL database.\
 _Express_: Framework for Node.\
-_Node_: Run-time environment for JS in the server.\
+_Node_: Run-time environment for JS in the server.
 
 Node Dependencies\
 -> Mongoose: Object Data Modelling library to simplify working with MongoDB.\
 -> Morgan: Logger to help debug.\
 -> dotenv: To protect MongoDB and other API secrets.
 -> Nodemon: Live reload server to speed up development.
--> CORS: To facilitate access between React and Node in development when they are served on different ports.
+-> CORS: To facilitate communication between React and Node in development when they are served on different ports.
 
-<br />
 
 #### __Frontend__
 
-_React_: JavaScript library for building user interfaces.\
+_React_: JavaScript library for building user interfaces.
+
+Uses Fetch to interact with the Backend, creating, getting and deleting blogs.
 
 React Dependencies\
--> React-Router-DOM: For routing inside the Single Page Application.\
+-> React-Router-DOM: For routing inside the Single Page Application.
 
 P.S.
 The name is from Hitchhiker's Guide to the Galaxy\
