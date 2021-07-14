@@ -1,26 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300&family=Noto+Sans+JP:wght@300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tourney&display=swap');
 
 body{
   margin: 0px;
   font-family: 'Noto Sans JP', serif;
 }
 
-p, h1, h2, h3, .link, ul{
+p, h1, h2, h3, a, a:visited, Link, ul{
+  color: black;
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color: #035096;
 }
 
 /* nav & footer styles */
 nav{
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.2);
   align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  border-bottom: 1px solid #035096;
+  border-bottom: 1px solid #b6c1ca;
+  margin-bottom: 10px;
 }
 nav .link{
   margin-left: 20px;
@@ -33,20 +34,49 @@ nav h1 {
   text-decoration: none;
 }
 
-.title {
+.hooloovoo {
+  font-family: 'Tourney';
   display: flex;
 }
 
 .link:hover {
   border-bottom: 1px solid #1288f6;
 }
-
 .active  {
   border-bottom: 3px solid #1288f6;
 }
 
+.blog {
+  margin: 5px 10px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+  text-align: left;
+}
+
+.title {
+  color: black;
+  font-family: 'Mukta';
+}
+
+.snippet {
+  margin: 5px 0px;
+  font-family: 'Noto Sans JP';
+}
+
+.tray {
+  margin: 5px 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.body {
+  font-family: 'Mukta';
+}
+
 footer {
-  margin-top: 5px;
+  margin-top: 10px;
   padding: 5px;
   border-top: 1px solid #035096;
 }

@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer>
-            <p>&copy; Ashish Selvaraj 2021</p>
+            <a href="https://www.ashishselvaraj.com/" target="_blank" rel="noopener noreferrer">&copy; Ashish Selvaraj 2021</a>
         </footer>
     );
 }

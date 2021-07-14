@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
+
 
 const Home = () => {
 
@@ -12,9 +14,7 @@ const Home = () => {
 
         if(response.ok) {
             let data = await response.json();
-
             let ar = data.blogs;
-            console.log(ar);
 
             setBlogs(ar);
         }
@@ -27,10 +27,16 @@ const Home = () => {
     return (
         <main>
             {blogs.map((blog) => (
-                <div>
-                    <h3>{blog.title}</h3>
-                    <p>{blog.subtitle}</p>
-                </div>
+                <Link to={{
+                    pathname:`/blogs/${blog._id}`,
+                    state: {blog: blog}
+                    }}>
+                    <article className="blog">
+                        <h3 className="title">{blog.title}</h3>
+                        <p className="snippet">{blog.subtitle}</p>
+                        <p className="body">{blog.body}</p>
+                    </article>
+                </Link>
             ))}
         </main>
     );

@@ -6,13 +6,32 @@ const getBlogs = async (req, res) => {
     let blogs;
 
     if(req.query.id) {
-        blogs = await Blog.find({ user: req.query.id });
+        try {
+            blogs = await Blog.find({ user: req.query.id });
+        }
+        catch{
+            res.status(500);
+            blogs = [];
+        }
     }
     else if(req.query.title) {
-        await Blog.find({$text: { $search: req.query.title }});
+        try {
+            blogs = await Blog.find({$text: { $search: req.query.title }});
+
+        } 
+        catch {
+            res.status(500);
+            blogs = [];
+        }
     }
     else {
-        blogs = await Blog.find();
+        try {
+            blogs = await Blog.find();
+        }
+        catch {
+            res.status(500);
+            blogs = [];
+        }
     }
 
     let response = {
@@ -22,15 +41,32 @@ const getBlogs = async (req, res) => {
 }
 
 const createBlog = async (req, res) => {
-    const blog = new Blog(req.body);
-    const result = await blog.save();
 
-    return result;
+    let result;
+    console.log("!!!!!!!!!!!!!!!!!!!");
+    console.log(req.body);
+    
+    try {
+        const blog = new Blog(req.body);
+        result = await blog.save();
+    }
+    catch {
+        result = {};
+        res.status(500);
+    }
+
+    res.json({ blog: result })
 }
 
 const detailsBlog = async (req, res) => {
 
-    blog = await Blog.findById(req.params.id);
+    try {
+        blog = await Blog.findById(req.params.id);
+    }
+    catch {
+        blog = {}
+        res.status(500);
+    }
 
     let response = {
         blog: blog
@@ -40,17 +76,18 @@ const detailsBlog = async (req, res) => {
 }
 
 const deleteBlog = async (req, res) => {
-    Blog.findByIdAndDelete(req.params.id)
-    .then(result => {
-        return {
-            blog: result
-        };
-    })
-    .catch(e => {
-        return {
-            error: e
-        }
-    });
+
+    let response;
+    
+    try {
+        response = await Blog.findByIdAndDelete(req.params.id);
+    }
+    catch {
+        response = {};
+        res.status(500);
+    }
+
+    res.json({ blog: response });
 }
 
-module.exports = {getBlogs, createBlog, detailsBlog}
+module.exports = {getBlogs, createBlog, detailsBlog, deleteBlog};
