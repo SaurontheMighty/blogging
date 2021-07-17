@@ -114,14 +114,16 @@ main h1 {
 
 .form-input {
   background-color: aliceblue;
-  width: 12vw;
+  width: 20vw;
+  font-size: 15px;
+  font-family: 'Noto Sans JP';
   margin-top: 2px;
   border: 2px solid #1288f6;
   margin-bottom: 20px;
 }
 
 textarea {
-  height: 8vh;
+  height: 16vh;
 }
 
 button {

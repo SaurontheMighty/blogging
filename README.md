@@ -42,3 +42,12 @@ React Dependencies\
 P.S.
 The name is from Hitchhiker's Guide to the Galaxy\
 (I highly recommend the book if you haven't read it!)
+
+#### __Documentation__
+
+| Routes     | HTTP Methods  |   Description      |
+|------------|:-------------:|--------------------|
+| /blogs     |      GET      | Gets all the blogs |
+| /blogs     |     POST      | Creates a blog     |
+| /blogs/:id |      GET      | Gets a blog        |
+| /blogs/:id |    DELETE     | Deletes a blog     |

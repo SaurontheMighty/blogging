@@ -16,6 +16,9 @@ const blogSchema = new Schema({
     body: {
         type: String,
         required: [true, "This is a required field!"]
+    },
+    image: {
+        type: String
     }
 }, { timestamps: true });
 

@@ -64,6 +64,7 @@ const CreateBlog = () => {
 
                 <button className="click">Create</button>
             </form>
+            <br/>
             {err? <p>Unable to Submit Form.</p> : <p></p>}
         </main>
     );

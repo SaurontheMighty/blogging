@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 
 const Details = () => {
 
@@ -65,8 +65,11 @@ const Details = () => {
                     <img src="/assets/edit.svg"/>
                     <img src="/assets/delete.svg" className="click" onClick = {deletePost} />
                 </div>
-                {err? <p>Unable to Submit Form.</p> : <p></p>}
             </article>
+            {err? 
+                <div>
+                    <p>Failed to delete blog</p><br />
+                </div> : <p></p>}
         </main>
     );
 }
