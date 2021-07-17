@@ -59,7 +59,7 @@ const createBlog = (req, res, next) => {
 const detailsBlog = (req, res, next) => {
 
     Blog.findById(req.params.id, function (err, data) {
-        if(err) {
+        if(err || data == null) {
             res.status(404);
             return res.json({ error: "Blog does not exist." });
         }
