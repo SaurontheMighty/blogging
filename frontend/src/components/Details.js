@@ -40,7 +40,7 @@ const Details = () => {
         }
     }, []);
 
-    const deletePost = async () => {
+    const deleteBlog = async () => {
 
         let response = await fetch(`http://localhost:3000/api/blogs/${id}`, {
             method: "DELETE",
@@ -62,8 +62,13 @@ const Details = () => {
                 <p className="snippet">{blog.subtitle}</p>
                 <p className="body">{blog.body}</p>
                 <div className="tray">
-                    <img src="/assets/edit.svg"/>
-                    <img src="/assets/delete.svg" className="click" onClick = {deletePost} />
+                    <Link to={{
+                    pathname:`/blogs/create`,
+                    state: {
+                        blog: blog
+                    }
+                    }}><img src="/assets/edit.svg" className="click"/></Link>
+                    <img src="/assets/delete.svg" className="click" onClick = {deleteBlog} />
                 </div>
             </article>
             {err? 

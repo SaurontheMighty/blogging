@@ -46,7 +46,8 @@ const createBlog = (req, res, next) => {
     const blog = new Blog(req.body);
     blog.save(function (err, data) {
         if(err) {
-            next(err);
+            res.status(500);
+            return res.json({ error: err });
         }
         else {
             return res.json({ blog: data });
@@ -71,7 +72,15 @@ const detailsBlog = (req, res, next) => {
 // PUT /api/blogs/:id
 const editBlog = (req, res, next) => {
 
-   // Work in Progress
+    Blog.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+        if(err) {
+            res.status(500);
+            return res.json({ error: err });
+        }
+        else {
+            return res.json({ blog: data });
+        }
+    })
 }
 
 // DELETE /api/blogs/:id

@@ -50,4 +50,5 @@ The name is from Hitchhiker's Guide to the Galaxy\
 | /blogs     |      GET      | Gets all the blogs |
 | /blogs     |     POST      | Creates a blog     |
 | /blogs/:id |      GET      | Gets a blog        |
+| /blogs/:id |      PUT      | Updates a blog     |
 | /blogs/:id |    DELETE     | Deletes a blog     |
